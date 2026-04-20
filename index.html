@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>miArgentina</title>
+<style>
+@font-face{font-family:'Barlow';src:url('fonts/Barlow-Medium.ttf') format('truetype');font-weight:500}
+@font-face{font-family:'Barlow';src:url('fonts/Barlow-SemiBold.ttf') format('truetype');font-weight:600}
+@font-face{font-family:'Barlow';src:url('fonts/Barlow-Bold.ttf') format('truetype');font-weight:700}
+
+:root{
+  --blue:#312fc8;
+  --bg:#e9e9e9;
+  --text:#2f2f2f;
+  --line:#d3d3d3;
+  --shadow:0 3px 10px rgba(0,0,0,.08);
+  --phone-desktop:860px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Barlow',sans-serif;
+  background:#bfbfbf;
+  color:var(--text);
+  overflow-x:hidden;
+}
+.viewport{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+}
+.phone{
+  width:100%;
+  max-width:var(--phone-desktop);
+  min-height:100vh;
+  background:var(--bg);
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* MAIN APP DESKTOP */
+.header{
+  background:var(--blue);
+  height:230px;
+  border-bottom-left-radius:48px;
+  border-bottom-right-radius:48px;
+  padding:18px 26px 0;
+  position:relative;
+  z-index:2;
+}
+.header-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+.hamburger{
+  width:56px;
+  height:40px;
+  background:transparent;
+  border:0;
+  padding:0;
+  cursor:pointer;
+  position:relative;
+  z-index:6;
+}
+.hamburger span{
+  position:absolute;
+  left:0;
+  width:56px;
+  height:6px;
+  border-radius:6px;
+  background:#fff;
+}
+.hamburger span:nth-child(1){top:0}
+.hamburger span:nth-child(2){top:16px}
+.hamburger span:nth-child(3){top:32px}
+
+.logo{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.logo img{
+  height:52px;
+  width:auto;
+  display:block;
+}
+.profile{
+  position:relative;
+  width:56px;
+  height:56px;
+  flex:0 0 auto;
+}
+.profile .avatar{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:#a7a7a7;
+  position:relative;
+  overflow:hidden;
+}
+.profile .avatar:before{
+  content:"";
+  position:absolute;
+  width:22px;
+  height:22px;
+  background:#efefef;
+  border-radius:50%;
+  top:8px;
+  left:17px;
+}
+.profile .avatar:after{
+  content:"";
+  position:absolute;
+  width:34px;
+  height:22px;
+  background:#efefef;
+  border-radius:22px 22px 10px 10px;
+  bottom:5px;
+  left:11px;
+}
+.profile .check{
+  position:absolute;
+  left:-3px;
+  bottom:2px;
+  width:24px;
+  height:24px;
+  background:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#6f87e9;
+  font-size:16px;
+  font-weight:700;
+}
+.greeting{
+  color:#fff;
+  text-align:center;
+  font-size:clamp(30px,4.5vw,42px);
+  font-weight:400;
+  margin-top:26px;
+}
+.content{
+  padding:0 34px 170px;
+  margin-top:-36px;
+  position:relative;
+  z-index:1;
+}
+.card{
+  background:#fff;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+}
+.turnos-card{
+  padding:36px 40px;
+  display:flex;
+  align-items:center;
+  gap:32px;
+}
+.turnos-icon{
+  width:140px;
+  height:140px;
+  flex:0 0 auto;
+}
+.turnos-icon img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.turnos-text{
+  flex:1;
+}
+.turnos-text h2{
+  color:#2d2d2d;
+  font-size:clamp(32px,4.2vw,58px);
+  line-height:1.12;
+  font-weight:700;
+  letter-spacing:-.5px;
+  margin-bottom:24px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--blue);
+  color:#fff;
+  text-decoration:none;
+  min-width:260px;
+  height:72px;
+  border-radius:36px;
+  font-size:clamp(24px,3vw,40px);
+  font-weight:500;
+}
+.credentials{
+  margin-top:34px;
+  background:#d3eadb;
+  border-radius:18px;
+  padding:34px 30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:220px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+  gap:20px;
+}
+.credentials .text{
+  color:#2f2f2f;
+  font-size:clamp(30px,4.2vw,54px);
+  line-height:1.2;
+  font-weight:700;
+  max-width:60%;
+}
+.credentials img{
+  width:180px;
+  height:auto;
+  display:block;
+}
+.section-title{
+  margin:82px 0 32px;
+  color:#2d2d2d;
+  font-size:clamp(42px,5vw,68px);
+  font-weight:700;
+  letter-spacing:-1px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:28px;
+}
+.tile{
+  background:#fff;
+  border-radius:26px;
+  min-height:180px;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
+  padding:26px 10px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+}
+.tile img{
+  width:70px;
+  height:70px;
+  object-fit:contain;
+  display:block;
+}
+.tile span{
+  margin-top:18px;
+  text-align:center;
+  color:#2e2e2e;
+  font-size:clamp(20px,2.6vw,32px);
+  font-weight:500;
+  line-height:1.1;
+}
+.profile-banner-wrap{
+  margin-top:88px;
+  overflow:hidden;
+}
+.profile-row{
+  display:flex;
+  gap:34px;
+  width:max-content;
+}
+.profile-card{
+  width:min(88vw,730px);
+  background:#dbc7cb;
+  border-radius:18px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+  padding:26px 26px;
+  display:flex;
+  align-items:center;
+  gap:26px;
+  min-height:210px;
+}
+.profile-card img{
+  width:190px;
+  height:auto;
+  display:block;
+}
+.profile-card .copy h3{
+  font-size:clamp(30px,4.2vw,54px);
+  line-height:1.1;
+  color:#2f2f2f;
+  margin-bottom:14px;
+  font-weight:700;
+}
+.profile-card .copy p{
+  font-size:clamp(22px,3vw,38px);
+  line-height:1.25;
+  color:#373737;
+  font-weight:400;
+}
+.placeholder-card{
+  width:190px;
+  border-radius:18px;
+  background:#cfcfcf;
+}
+.bottom-nav{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  background:#f7f7f7;
+  border-top:1px solid #d0d0d0;
+  display:flex;
+  justify-content:space-around;
+  padding:14px 12px 16px;
+  z-index:4;
+}
+.nav-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  min-width:72px;
+}
+.nav-item svg{width:48px;height:48px}
+.nav-item span{
+  font-size:clamp(18px,2.5vw,28px);
+  font-weight:500;
+  color:#7f7f7f;
+}
+.nav-item.active span{color:#312fc8}
+.outline{stroke:#302cc7;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.outline-gray{stroke:#8e8e8e;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.fill-gray{fill:#8e8e8e}
+
+/* MENU */
+.menu-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.18);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .22s ease;
+  z-index:8;
+}
+.side-menu{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#efefef;
+  transform:translateX(-102%);
+  transition:transform .28s cubic-bezier(.2,.9,.28,1);
+  z-index:9;
+  overflow-y:auto;
+}
+.side-menu-top{
+  background:#312fc8;
+  min-height:194px;
+  padding:16px 14px 18px;
+  color:#fff;
+}
+.side-menu-bar{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-bottom:18px;
+}
+.menu-back{
+  width:18px;
+  height:18px;
+  border:0;
+  background:transparent;
+  padding:0;
+  position:relative;
+  cursor:pointer;
+  flex:0 0 auto;
+}
+.menu-back:before,
+.menu-back:after{
+  content:"";
+  position:absolute;
+  left:1px;
+  top:8px;
+  width:14px;
+  height:2.4px;
+  background:#fff;
+  border-radius:2px;
+  transform-origin:left center;
+}
+.menu-back:before{transform:rotate(45deg)}
+.menu-back:after{transform:rotate(-45deg)}
+.side-menu-logo{
+  height:28px;
+  width:auto;
+  display:block;
+}
+.side-menu-profile{
+  display:grid;
+  grid-template-columns:78px 1fr;
+  gap:16px;
+  align-items:center;
+  padding-left:4px;
+}
+.side-menu-avatar{
+  width:78px;
+  height:78px;
+  position:relative;
+}
+.side-menu-avatar .avatar{
+  width:78px;
+  height:78px;
+  border-radius:50%;
+  background:#b0b0b0;
+  position:relative;
+  overflow:hidden;
+}
+.side-menu-avatar .avatar:before{
+  content:"";
+  position:absolute;
+  width:29px;
+  height:29px;
+  background:#e7e7e7;
+  border-radius:50%;
+  top:12px;
+  left:24px;
+}
+.side-menu-avatar .avatar:after{
+  content:"";
+  position:absolute;
+  width:48px;
+  height:28px;
+  background:#e7e7e7;
+  border-radius:28px 28px 14px 14px;
+  left:15px;
+  bottom:8px;
+}
+.side-menu-avatar .check{
+  position:absolute;
+  right:-2px;
+  bottom:0;
+  width:31px;
+  height:31px;
+  border-radius:50%;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#7aa7e8;
+  font-size:19px;
+  font-weight:700;
+}
+.side-menu-user strong{
+  display:block;
+  font-size:21px;
+  line-height:1.1;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.side-menu-user .cuil{
+  display:block;
+  font-size:14px;
+  line-height:1.15;
+  font-weight:600;
+  margin-bottom:6px;
+}
+.side-menu-user .status{
+  display:block;
+  font-size:13px;
+  line-height:1.15;
+  font-weight:500;
+}
+.side-menu-group{
+  border-top:1px solid #d3d3d3;
+}
+.side-menu-group:first-child{
+  border-top:none;
+}
+.side-menu-link{
+  min-height:66px;
+  padding:0 18px;
+  display:grid;
+  grid-template-columns:34px 1fr;
+  align-items:center;
+  gap:16px;
+  text-decoration:none;
+  color:#333;
+  background:#efefef;
+}
+.side-menu-icon{
+  width:28px;
+  height:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.side-menu-icon svg{
+  width:28px;
+  height:28px;
+  stroke:#9b9b9b;
+  fill:none;
+  stroke-width:2.1;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.side-menu-icon .fill{fill:#9b9b9b;stroke:none}
+.side-menu-link span{
+  font-size:16px;
+  font-weight:600;
+  line-height:1.1;
+}
+.phone.menu-open .menu-overlay{opacity:1;pointer-events:auto}
+.phone.menu-open .side-menu{transform:translateX(0)}
+.phone.menu-open .header .hamburger{opacity:0;pointer-events:none}
+
+/* MOBILE: EXACTO COMO LA FOTO 2 */
+@media (max-width: 700px){
+  body{
+    background:#e9e9e9;
+  }
+  .viewport{
+    display:block;
+    min-height:auto;
+  }
+  .phone{
+    max-width:none;
+    margin:0;
+  }
+  .header{
+    height:146px;
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
+    padding:14px 18px 0;
+  }
+  .header-top{
+    gap:10px;
+  }
+  .hamburger{
+    width:26px;
+    height:22px;
+  }
+  .hamburger span{
+    width:26px;
+    height:3px;
+    border-radius:4px;
+  }
+  .hamburger span:nth-child(1){top:0}
+  .hamburger span:nth-child(2){top:8px}
+  .hamburger span:nth-child(3){top:16px}
+  .logo img{
+    height:24px;
+  }
+  .profile{
+    width:34px;
+    height:34px;
+  }
+  .profile .avatar{
+    width:34px;
+    height:34px;
+  }
+  .profile .avatar:before{
+    width:13px;
+    height:13px;
+    top:5px;
+    left:10px;
+  }
+  .profile .avatar:after{
+    width:22px;
+    height:14px;
+    bottom:3px;
+    left:6px;
+  }
+  .profile .check{
+    width:15px;
+    height:15px;
+    font-size:11px;
+    left:-2px;
+    bottom:0;
+  }
+  .greeting{
+    margin-top:16px;
+    font-size:21px;
+  }
+  .content{
+    padding:0 12px 96px;
+    margin-top:-18px;
+  }
+  .turnos-card{
+    padding:20px 18px 18px;
+    gap:16px;
+    border-radius:16px;
+  }
+  .turnos-icon{
+    width:72px;
+    height:72px;
+  }
+  .turnos-text h2{
+    font-size:22px;
+    line-height:1.08;
+    letter-spacing:-.25px;
+    margin-bottom:16px;
+  }
+  .btn{
+    min-width:160px;
+    height:42px;
+    border-radius:22px;
+    font-size:16px;
+  }
+  .credentials{
+    margin-top:22px;
+    padding:22px 18px;
+    min-height:126px;
+    border-radius:16px;
+  }
+  .credentials .text{
+    font-size:22px;
+    line-height:1.1;
+    max-width:180px;
+  }
+  .credentials img{
+    width:108px;
+  }
+  .section-title{
+    margin:34px 0 16px;
+    font-size:26px;
+    letter-spacing:-.35px;
+  }
+  .grid{
+    gap:12px;
+  }
+  .tile{
+    min-height:106px;
+    border-radius:16px;
+    padding:16px 6px 12px;
+  }
+  .tile img{
+    width:42px;
+    height:42px;
+  }
+  .tile span{
+    margin-top:12px;
+    font-size:12.5px;
+    line-height:1.08;
+  }
+  .profile-banner-wrap{
+    margin-top:24px;
+  }
+  .profile-row{
+    gap:12px;
+  }
+  .profile-card{
+    width:300px;
+    border-radius:8px;
+    padding:12px 16px;
+    gap:14px;
+    min-height:142px;
+  }
+  .profile-card img{
+    width:96px;
+  }
+  .profile-card .copy h3{
+    font-size:22px;
+    margin-bottom:8px;
+  }
+  .profile-card .copy p{
+    font-size:16px;
+    line-height:1.16;
+  }
+  .placeholder-card{
+    width:96px;
+    border-radius:8px;
+  }
+  .bottom-nav{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    padding:8px 0 10px;
+  }
+  .nav-item{
+    gap:3px;
+    min-width:64px;
+  }
+  .nav-item svg{
+    width:30px;
+    height:30px;
+  }
+  .nav-item span{
+    font-size:16px;
+  }
+
+  .side-menu{
+    width:100%;
+  }
+  .side-menu-top{
+    min-height:174px;
+    padding:14px 14px 16px;
+  }
+  .side-menu-bar{
+    gap:14px;
+    margin-bottom:14px;
+  }
+  .menu-back{
+    width:18px;
+    height:18px;
+  }
+  .menu-back:before,
+  .menu-back:after{
+    left:1px;
+    top:8px;
+    width:14px;
+    height:2.2px;
+  }
+  .side-menu-logo{
+    height:22px;
+  }
+  .side-menu-profile{
+    grid-template-columns:72px 1fr;
+    gap:12px;
+  }
+  .side-menu-avatar{
+    width:72px;
+    height:72px;
+  }
+  .side-menu-avatar .avatar{
+    width:72px;
+    height:72px;
+  }
+  .side-menu-avatar .avatar:before{
+    width:27px;
+    height:27px;
+    top:11px;
+    left:22px;
+  }
+  .side-menu-avatar .avatar:after{
+    width:44px;
+    height:25px;
+    left:14px;
+    bottom:8px;
+  }
+  .side-menu-avatar .check{
+    width:28px;
+    height:28px;
+    font-size:17px;
+  }
+  .side-menu-user strong{
+    font-size:17px;
+    margin-bottom:5px;
+  }
+  .side-menu-user .cuil{
+    font-size:12px;
+    margin-bottom:5px;
+  }
+  .side-menu-user .status{
+    font-size:12px;
+  }
+  .side-menu-link{
+    min-height:70px;
+    padding:0 16px;
+    grid-template-columns:30px 1fr;
+    gap:14px;
+  }
+  .side-menu-icon{
+    width:24px;
+    height:24px;
+  }
+  .side-menu-icon svg{
+    width:24px;
+    height:24px;
+  }
+  .side-menu-link span{
+    font-size:14px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="viewport">
+  <div class="phone" id="phone">
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <aside class="side-menu" id="sideMenu" aria-hidden="true">
+      <div class="side-menu-top">
+        <div class="side-menu-bar">
+          <button class="menu-back" id="menuBack" type="button" aria-label="Cerrar menú"></button>
+          <img class="side-menu-logo" src="https://mi.argentina.gob.ar/img/logos/miargentina-logo.svg" alt="miArgentina">
+        </div>
+        <div class="side-menu-profile">
+          <div class="side-menu-avatar">
+            <div class="avatar"></div>
+            <div class="check">✓</div>
+          </div>
+          <div class="side-menu-user">
+            <strong>Ivan Ferrero</strong>
+            <span class="cuil">CUIL: 20493173961</span>
+            <span class="status">Identidad validada</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-menu-group">
+        <a class="side-menu-link" href="#"><span class="side-menu-icon"><svg viewBox="0 0 32 32"><circle cx="16" cy="10" r="5"/><path d="M7 27c2-6 7-9 9-9s7 3 9 9"/></svg></span><span>Mi perfil</span></a>
+        <a class="side-menu-link" href="#"><span class="side-menu-icon"><svg viewBox="0 0 32 32"><circle cx="11" cy="12" r="4.5"/><circle cx="22" cy="11" r="4.5"/><path d="M3 26c2-5 6-8 8-8 3 0 7 3 9 8"/><path d="M14 26c2-5 6-8 8-8 2 0 6 3 7 8"/></svg></span><span>Hijos/as asociados</span></a>
+        <a class="side-menu-link" href="#"><span class="side-menu-icon"><svg viewBox="0 0 32 32"><rect x="10" y="3" width="12" height="26" rx="2"/><circle cx="16" cy="23" r="2.2"/><path d="M13 7h6"/></svg></span><span>Suscribir servicios</span></a>
+      </div>
+      <div class="side-menu-group">
+        <a class="side-menu-link" href="#"><span class="side-menu-icon"><svg viewBox="0 0 32 32"><rect x="7" y="13" width="18" height="14" rx="2"/><path d="M11 13V9a5 5 0 0 1 10 0v4"/><circle cx="16" cy="20" r="1.3"/></svg></span><span>Seguridad y privacidad</span></a>
+      </div>
+      <div class="side-menu-group">
+        <a class="side-menu-link" href="#"><span class="side-menu-icon"><svg viewBox="0 0 32 32"><path class="fill" d="M5.5 7.5h4v17h-4zM12 5.8h4.2v18.7H12z"/><path d="M20.8 9h5.2"/></svg></span><span>Acerca de</span></a>
+        <a class="side-menu-link" href="#"><span class="side-menu-icon"><svg viewBox="0 0 32 32"><rect x="7" y="4" width="16" height="22" rx="2"/><path d="M11 10h8M11 15h8M11 20h5"/><circle cx="24.5" cy="22.5" r="4.5"/><path d="M27.6 25.6l2.4 2.4"/></svg></span><span>Términos y condiciones</span></a>
+      </div>
+      <div class="side-menu-group">
+        <a class="side-menu-link" href="#"><span class="side-menu-icon"><svg viewBox="0 0 32 32"><path d="M14 8l-8 8 8 8"/><path d="M6 16h15"/><path d="M24 6v20"/></svg></span><span>Cerrar sesión</span></a>
+        <a class="side-menu-link" href="#"><span class="side-menu-icon"><svg viewBox="0 0 32 32"><path d="M6 14l10-8 10 8"/><path d="M10 13v12h12V13"/></svg></span><span>Volver al inicio</span></a>
+      </div>
+    </aside>
+
+    <header class="header">
+      <div class="header-top">
+        <button class="hamburger" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" type="button">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="logo"><img src="https://mi.argentina.gob.ar/img/logos/miargentina-logo.svg" alt="miArgentina"></div>
+        <div class="profile"><div class="avatar"></div><div class="check">✓</div></div>
+      </div>
+      <div class="greeting">¡Hola Ivan!</div>
+    </header>
+
+    <main class="content">
+      <section class="card turnos-card">
+        <div class="turnos-icon"><img src="https://mi.argentina.gob.ar/img/2024/turno_empty.svg" alt=""></div>
+        <div class="turnos-text">
+          <h2>No tenés turnos programados.</h2>
+          <a class="btn" href="#">Solicitalo acá</a>
+        </div>
+      </section>
+
+      <section class="credentials">
+        <div class="text">¡Todas tus credenciales están al día!</div>
+        <img src="https://mi.argentina.gob.ar/img/2024/iconos/icono-ilustracion-perfil@4x.svg" alt="">
+      </section>
+
+      <h3 class="section-title">¿Qué necesitás hoy?</h3>
+
+      <section class="grid">
+        <div class="tile"><img src="https://mi.argentina.gob.ar/img/2024/iconos/icono-documentos.svg" alt=""><span>Documentos</span></div>
+        <div class="tile"><img src="https://mi.argentina.gob.ar/img/2024/iconos/icono-vehiculos.svg" alt=""><span>Vehículos</span></div>
+        <div class="tile"><img src="https://mi.argentina.gob.ar/img/2024/iconos/icono-trabajo.svg" alt=""><span>Trabajo</span></div>
+        <div class="tile"><img src="https://mi.argentina.gob.ar/img/2024/iconos/icono-salud.svg" alt=""><span>Salud</span></div>
+        <div class="tile"><img src="https://mi.argentina.gob.ar/img/2024/iconos/icono-cobros.svg" alt=""><span>Cobros</span></div>
+        <div class="tile"><img src="https://mi.argentina.gob.ar/img/2024/iconos/icono-tramites.svg" alt=""><span>Trámites</span></div>
+        <div class="tile"><img src="https://mi.argentina.gob.ar/img/2024/iconos/icono-turnos.svg" alt=""><span>Turnos</span></div>
+        <div class="tile"><img src="https://mi.argentina.gob.ar/img/2024/iconos/icono-hijos.svg" alt=""><span>Hijos</span></div>
+      </section>
+
+      <div class="profile-banner-wrap">
+        <div class="profile-row">
+          <section class="profile-card">
+            <img src="https://mi.argentina.gob.ar/img/2024/iconos/icono-ilustracion-calendario@4x.svg" alt="">
+            <div class="copy">
+              <h3>Completá tu perfil</h3>
+              <p>Mantené todos tus datos actualizados</p>
+            </div>
+          </section>
+          <div class="placeholder-card"></div>
+        </div>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <div class="nav-item active">
+        <svg viewBox="0 0 40 40"><path d="M8 20L20 10l12 10" class="outline"/><path d="M13 18v12h14V18" fill="#312fc8" stroke="#312fc8" stroke-width="2.8" stroke-linejoin="round"/></svg>
+        <span>Inicio</span>
+      </div>
+      <div class="nav-item">
+        <svg viewBox="0 0 40 40"><rect x="11" y="8" width="18" height="24" rx="2" class="outline-gray"/><rect x="14" y="11" width="5" height="7" class="outline-gray"/><line x1="21" y1="14" x2="26" y2="14" class="outline-gray"/><line x1="21" y1="18" x2="26" y2="18" class="outline-gray"/><line x1="14" y1="24" x2="26" y2="24" class="outline-gray"/><line x1="14" y1="28" x2="23" y2="28" class="outline-gray"/></svg>
+        <span>Novedades</span>
+      </div>
+      <div class="nav-item">
+        <svg viewBox="0 0 40 40"><path class="outline-gray" d="M11 10l4 6-3 3c2 4 6 8 10 10l3-3 6 4c-1 2-3 4-6 4-4 0-9-3-14-8S3 16 3 12c0-3 2-5 4-6z" transform="translate(3 3) scale(.92)"/></svg>
+        <span>Teléfonos</span>
+      </div>
+      <div class="nav-item">
+        <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="11" class="outline-gray"/><circle cx="16" cy="18" r="1.2" class="fill-gray"/><circle cx="24" cy="18" r="1.2" class="fill-gray"/><path d="M16 24c2 1.8 6 1.8 8 0" class="outline-gray"/></svg>
+        <span>Tina</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<script>
+const phone = document.getElementById('phone');
+const menuToggle = document.getElementById('menuToggle');
+const menuOverlay = document.getElementById('menuOverlay');
+const menuBack = document.getElementById('menuBack');
+const sideMenu = document.getElementById('sideMenu');
+
+function setMenu(open){
+  phone.classList.toggle('menu-open', open);
+  menuToggle.setAttribute('aria-expanded', String(open));
+  sideMenu.setAttribute('aria-hidden', String(!open));
+}
+menuToggle.addEventListener('click', () => setMenu(true));
+menuOverlay.addEventListener('click', () => setMenu(false));
+menuBack.addEventListener('click', () => setMenu(false));
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape') setMenu(false); });
+</script>
+</body>
+</html>
